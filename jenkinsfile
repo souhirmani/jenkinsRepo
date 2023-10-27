@@ -1,27 +1,26 @@
 pipeline {
-agent any
-triggers {
-pollSCM('*/5 * * * *') // Vérifier toutes les 5 minutes
-}
-stages {
-stage('Checkout') {
-steps {
-echo "Récupération du code source"
-checkout scm
-}
-}
-stage('Build') {
-steps {
-echo "Build du projet"
-// Ajoutez les commandes de build ici
-}
-}
-stage('Deploy') {
-steps {
-echo "Déploiement du projet"
-sh "node app.js"
-// Ajoutez les commandes de déploiement ici
-}
-}
-}
+    agent any {
+        pollSCM('*/5 * * * *') //Verifier toutes les 5 minutes
+    }
+
+  stages {
+        stage('Checkout') {
+            steps {
+                echo "Récupération du code source"
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                echo "Build du projet"
+                // Ajoutez les commandes de build ici
+            }
+        }
+        stage('Diploy') {
+            steps {
+                echo "Déploiement du projet"
+                //Ajoutez  les commandes de déploiement ici
+            }
+        }
+    }
 }
